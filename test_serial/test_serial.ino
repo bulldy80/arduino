@@ -1,18 +1,27 @@
 const int speakerPin = 3;
 const int ledPin = 2;
 
+void beep(int freq, int duration=50)
+{
+  tone(speakerPin, freq);
+  delay(duration);
+  noTone(speakerPin);
+  delay(50);
+}
+
 void setup()
 {
   Serial.begin(9600);
+  Serial.println("We are ready!");
   pinMode(speakerPin, OUTPUT);
   pinMode(ledPin, OUTPUT);
-  tone(speakerPin, 500);
-  delay(500);
-  noTone(speakerPin);
-  delay(300);
-  tone(speakerPin, 700);
-  delay(200);
-  noTone(speakerPin);
+  //beep(500);
+  //beep(700);
+  //beep(600);
+  //beep(800);
+  //beep(700);
+  //beep(900);
+  beep(1000, 100);
 }
 
 void loop()
@@ -32,6 +41,7 @@ void loop()
       Serial.print("Blinked ");
       Serial.print(numBlinks);
       Serial.println(" times!");
+      beep(500);
     }
   }
 }
